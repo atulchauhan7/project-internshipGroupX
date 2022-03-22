@@ -10,9 +10,9 @@ name: {
     lowercase: true,
 }, 
     
-    fullName: {
+    fullName: {                 
         type:String,
-        required:true,
+        required:true,        
 
     },
 
