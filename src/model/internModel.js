@@ -1,44 +1,37 @@
-const mongoose = require('mongoose')
-const ObjectId = mongoose.Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 const internSchema = new mongoose.Schema({
-    name: { 
-        type: String,
-         require: true,
-          unique: true },
-     email: {
-            type: String,
-            trim: true,
-            lowercase: true,
-            unique: true,
-            required: 'Email address is required',
-            validate: {
-                validator: function (email) {
-                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-                }, message: 'Please fill a valid email address', isAsync: false
-            }
+
+    name: {
+        type:String,
+        required:true,
+        trim:true
+    }, 
+        
+        email: {
+            type:String,
+            required:true,
+            match: [/^\w+([\.-]?\w+)@\w+([\. -]?\w+)(\.\w{2,3})+$/, 'Please fill a valid email address'], 
+            unique:true
         },
-    
+        
         mobile: {
-            type: String,
-            trim: true,
-            unique: true,
-            required: 'Mobile is required',
-            validate: {
-                validator: function (mobile) {
-                    return  /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/.test(mobile)
-                }, message: 'Please fill a valid mobile number', isAsync: false
-            }
-        },
-        collegeId: {
-            type: ObjectId,
-            ref: 'College',
-            required: true,
-        },
+            type:Number,
+            required:true,
+            match:[/^([+]\d{2})?\d{10}$/,"please fill a valid mobile Number"], 
+             unique:true
+            },
+     collegeId: {
+         type:ObjectId, 
+         ref: "college", 
+         
     isDeleted: {
-        type: Boolean,
+        type: Boolean, 
         default: false
     }
-}, {timestamps: true})
 
-module.exports = mongoose.model('Intern', internSchema)
+}},{timeStamps: true})
+
+module.exports = mongoose.model('intern', internSchema)
