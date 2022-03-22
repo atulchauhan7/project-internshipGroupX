@@ -9,7 +9,7 @@ router.post("/colleges", collegeControl.createCollege)
 
 router.post("/interns", internControl.createIntern)
 
-router.get("/collegeDetails", collegeControl.collegeDetails)
+router.get("/collegeDetails", collegeControl.collegeDetails)         
 
 
-module.exports = router;
+module.exports = router; 
