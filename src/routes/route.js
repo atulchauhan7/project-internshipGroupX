@@ -5,7 +5,7 @@ const collegeModel = require("../model/collegeModel")
 const collegeControl  = require("../controller/collegeController")
 const internControl  = require("../controller/internController")
 
-router.post("/colleges", collegeControl.createCollege)
+router.post("/colleges", collegeControl.createCollege) /////
 
 router.post("/interns", internControl.createIntern)
 
